@@ -1,0 +1,10 @@
+{
+  "source_commit": "34dd68e3b5732e358b5780fd303c7739c6f26337",
+  "displayed_version": "V10.1",
+  "uploaded_v11_matches_index": true,
+  "files": {
+    "toto_prizes.csv": "ba46fc69ef6fd2327b0ecab3418a7830a3ffd92204e7e97e471f71c972e31897",
+    "refresh-toto.yml": "3c68b9aa47bf511149f596c49b94a25146fbfeef693d62c4378777df1120e718",
+    "index.html": "60a04ef208be3ca156fc01458f78ab0b8e0623d709b4035847ae21fecf984bfe"
+  }
+}
