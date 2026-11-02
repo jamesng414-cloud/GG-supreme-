@@ -20,34 +20,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Download and validate CSV
-        shell: bash
-        run: |
-          python3 - <<'PY'
-          import csv
-          import io
-          import pathlib
-          import urllib.request
-
-          url = "https://raw.githubusercontent.com/playingmeow/SingaporePools/main/toto_prizes.csv"
-          req = urllib.request.Request(url, headers={"User-Agent": "GG-Supreme-TOTO/1.0"})
-          with urllib.request.urlopen(req, timeout=30) as response:
-              data = response.read()
-
-          if len(data) < 10000:
-              raise ValueError("CSV too small; keeping previous file")
-
-          content = data.decode("utf-8-sig")
-          rows = list(csv.DictReader(io.StringIO(content)))
-          required = {"draw_number", "number", "date"}
-          if not rows or not required.issubset(rows[0]):
-              raise ValueError("Unexpected CSV columns; keeping previous file")
-
-          if len(rows) < 1000:
-              raise ValueError("Too few rows; keeping previous file")
-
-          pathlib.Path("toto_prizes.csv").write_bytes(data)
-          print("Validated", len(rows), "rows")
-          PY
+        run: python3 scripts/update_toto.py
 
       - name: Commit updated data
         shell: bash
